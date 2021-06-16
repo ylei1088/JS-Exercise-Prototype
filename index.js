@@ -38,7 +38,32 @@ Airplane.prototype.land = function () {
           + It should return a string with `name` and `age`. Example: "Mary, 50"
   */
 
-function Person() {}
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
+}
+
+Person.prototype.eat = function (edible) {
+  if (this.stomach.length <= 10) {
+    this.stomach.push(edible);
+  }
+};
+
+Person.prototype.poop = function () {
+  this.stomach = [];
+};
+
+Person.prototype.toString = function () {
+  return `${this.name}, ${this.age}`;
+};
+
+const personOne = new Person({
+  name: "Mary",
+  age: 50,
+});
+
+console.log(personOne);
 
 /*
     TASK 2
@@ -75,6 +100,9 @@ function Baby() {}
     3. new bingding use a constructor function, 'this' refer to specific instance of the object is created and returned by the constructor function.
 
     4. explicit binding is explicitly defined. 
+    .call immediately invokes the function we fasss in arguments 1 by 1
+    .apply immediately invokes the function, we pass arguments as an array
+    .bind - does not immediately invoke the cfunction, instead it returns a brand new function that can be invoked later, we pass in the arguments 1 by 1.
   */
 
 ///////// END OF CHALLENGE /////////
